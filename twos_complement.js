@@ -12,6 +12,10 @@ function twos_complement(integer){
   negative;
 }
 
-twos_complement(00000000);
-twos_complement(00000010);
-twos_complement(00000011);
+// twos_complement(00000000);
+// twos_complement(00000010);
+// twos_complement(00000011);
+twos_complement(0);
+twos_complement(1);
+twos_complement(2);
+twos_complement(234);
