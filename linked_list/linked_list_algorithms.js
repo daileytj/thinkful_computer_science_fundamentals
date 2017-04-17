@@ -133,9 +133,22 @@ findElementThirdToLast(linkedList1);
 findElementThirdToLast(linkedList2);
 
 // Write an algorithm to reverse a linked list
-// console.log('---------------------------');
-// console.log('reverseLinkedList tests');
-// console.log('---------------------------');
+console.log('---------------------------');
+console.log('reverseLinkedList tests');
+console.log('---------------------------');
+let reverseLinkedList = linkedList =>{
+    let reversedLinkedList = new LinkedList();
+    let indexCounter = 0;
+    for (let i = linkedList.length-1; i >= 0; i -= 1){
+        reversedLinkedList.insert(indexCounter,linkedList.get(i));
+        indexCounter += 1;
+    }
+    console.log(`reversed linked list = ${JSON.stringify(reversedLinkedList)}`);
+};
+
+reverseLinkedList(linkedList1);
+reverseLinkedList(linkedList2);
+
 
 // Write an algorithm to find whether a linked list has a cycle (i.e. whether a node
 // in the list has its next value pointing to an earlier node in the list)
