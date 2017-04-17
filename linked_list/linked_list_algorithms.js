@@ -88,6 +88,17 @@ linkedList2.insert(7,14);
 linkedList2.insert(8,16);
 console.log(`linked list 2: ${JSON.stringify(linkedList2)}`);
 
+let linkedListWithCycle = new LinkedList();
+linkedListWithCycle.insert(0,0);
+linkedListWithCycle.insert(1,1);
+linkedListWithCycle.insert(2,2);
+linkedListWithCycle.insert(3,3);
+linkedListWithCycle.insert(4,4);
+linkedListWithCycle.insert(5,4);
+linkedListWithCycle._find(4).next = {"value":2,"next":{"value":3,"next":{"value":4,"next":null}}};
+
+console.log(`linked list with cycle: ${JSON.stringify(linkedListWithCycle)}`);
+
 // Write an algorithm to find the middle element of a linked list without using the
 // .length property
 console.log('---------------------------');
@@ -152,6 +163,24 @@ reverseLinkedList(linkedList2);
 
 // Write an algorithm to find whether a linked list has a cycle (i.e. whether a node
 // in the list has its next value pointing to an earlier node in the list)
-// console.log('---------------------------');
-// console.log('linkedListHasCycle tests');
-// console.log('---------------------------');
+console.log('---------------------------');
+console.log('linkedListHasCycle tests');
+console.log('---------------------------');
+
+let linkedListHasCycle = linkedList =>{
+    let allLinkedListValues = [];
+    let hasCycle = false;
+    for (let i = 0; i < linkedList.length; i+=1){
+        for (let j = 0; j < allLinkedListValues.length; j +=1){
+            if (linkedList.get(i) == allLinkedListValues[j]){
+                hasCycle = true;
+                }
+            }
+        allLinkedListValues.push(linkedList.get(i));
+    }
+    // console.log(`all linked list values = ${allLinkedListValues}`);
+    console.log(`Has cycle = ${hasCycle}`);
+}
+
+linkedListHasCycle(linkedList1);
+linkedListHasCycle(linkedListWithCycle);
