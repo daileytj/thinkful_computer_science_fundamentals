@@ -104,32 +104,41 @@ HashMap.SIZE_RATIO = 3;
 // "amadm" and "cllci" should all return true, whereas "caabl" and "aaxxis" should return false.
 
 let isPermutationPalindrome = word => {
-    let hashMapOfWord = new HashMap();
-    let pushWordToHashMap = wordToSplit => {
-        let wordArray = wordToSplit.split('');
-        for ( let i = 0; i < wordArray.length; i+=1){
-            console.log('hash map of', [i], hashMapOfWord.get(wordArray[i]));
-            if(hashMapOfWord.get(wordArray[i]) == 1){
-            hashMapOfWord.set( wordArray[i], 2 );
+    // let hashMapOfWord = new HashMap();
+    let counter = 0;
+    let hashMapOfWord = {};
+    let wordArray = word.split('');
+
+    wordArray.forEach(function(char){
+        if(hashMapOfWord[char]){
+            hashMapOfWord[char] = hashMapOfWord[char] += 1;
         }
         else{
-            hashMapOfWord.set( wordArray[i], 1 );
+            hashMapOfWord[char] =  1;
         }
+    });
+
+    wordArray.forEach(function(char){
+        if(hashMapOfWord[char] == 1){
+            counter += 1;
+        }
+    });
+
+    console.log(word, ':');
+    if (counter > 1){
+        console.log('false');
     }
-}
-
-    pushWordToHashMap(word);
-
-    console.log('get "A": ', hashMapOfWord.get('a'));
-    console.log('hashMapOfWord', hashMapOfWord);
-
+    else {
+        console.log("true");
+    }
+    console.log('----------');
 }
 
 isPermutationPalindrome('madam'); // should equal 'true'
-// isPermutationPalindrome('amadm'); // should equal 'true'
-// isPermutationPalindrome('cllci'); // should equal 'true'
-// isPermutationPalindrome('caabl'); // should equal 'false'
-// isPermutationPalindrome('aaxxis'); // should equal 'false'
+isPermutationPalindrome('amadm'); // should equal 'true'
+isPermutationPalindrome('cllci'); // should equal 'true'
+isPermutationPalindrome('caabl'); // should equal 'false'
+isPermutationPalindrome('aaxxis'); // should equal 'false'
 
 
 // Write an algorithm to group a list of words into anagrams. For example,
