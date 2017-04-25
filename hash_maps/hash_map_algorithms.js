@@ -108,11 +108,21 @@ let isPermutationPalindrome = word => {
     let pushWordToHashMap = wordToSplit => {
         let wordArray = wordToSplit.split('');
         for ( let i = 0; i < wordArray.length; i+=1){
-            hashMapOfWord.set( i+1, wordArray[i] );
+            console.log('hash map of', [i], hashMapOfWord.get(wordArray[i]));
+            if(hashMapOfWord.get(wordArray[i]) == 1){
+            hashMapOfWord.set( wordArray[i], 2 );
+        }
+        else{
+            hashMapOfWord.set( wordArray[i], 1 );
         }
     }
+}
+
     pushWordToHashMap(word);
+
+    console.log('get "A": ', hashMapOfWord.get('a'));
     console.log('hashMapOfWord', hashMapOfWord);
+
 }
 
 isPermutationPalindrome('madam'); // should equal 'true'
